@@ -1,18 +1,18 @@
 # Good Code Parser
 
-[![code-style](https://github.com/cable8mm/good-code-parser/actions/workflows/code-style.yml/badge.svg)](https://github.com/cable8mm/good-code-parser/actions/workflows/code-style.yml)
-[![run-tests](https://github.com/cable8mm/good-code-parser/actions/workflows/run-tests.yml/badge.svg)](https://github.com/cable8mm/good-code-parser/actions/workflows/run-tests.yml)
-![Packagist Version](https://img.shields.io/packagist/v/esc-company/good-code-parser)
-![Packagist Downloads](https://img.shields.io/packagist/dt/esc-company/good-code-parser)
-![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/esc-company/good-code-parser/php)
-![Packagist Stars](https://img.shields.io/packagist/stars/esc-company/good-code-parser)
-![Packagist License](https://img.shields.io/packagist/l/esc-company/good-code-parser)
+[![code-style](https://github.com/cable8mm/good-code/actions/workflows/code-style.yml/badge.svg)](https://github.com/cable8mm/good-code/actions/workflows/code-style.yml)
+[![run-tests](https://github.com/cable8mm/good-code/actions/workflows/run-tests.yml/badge.svg)](https://github.com/cable8mm/good-code/actions/workflows/run-tests.yml)
+![Packagist Version](https://img.shields.io/packagist/v/cable8mm/good-code)
+![Packagist Downloads](https://img.shields.io/packagist/dt/cable8mm/good-code)
+![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/cable8mm/good-code/php)
+![Packagist Stars](https://img.shields.io/packagist/stars/cable8mm/good-code)
+![Packagist License](https://img.shields.io/packagist/l/cable8mm/good-code)
 
 A robust code specification is crucial within the commercial market industry, especially for online stores like Amazon. The integration of online stores with Warehouse Management Systems (WMS) is essential as both systems handle extensive seller and product data. Therefore, we recommend implementing a solid structure and providing robust support for these systems.
 
 These specifications cover a variety of online stores, including Coupang, 11th Street, Naver Storefarm, and many others for a while.
 
-We have provided the API Documentation on the web. For more information, please visit https://www.palgle.com/good-code-parser/ ❤️
+We have provided the API Documentation on the web. For more information, please visit <https://www.palgle.com/good-code/> ❤️
 
 ## Features
 
@@ -25,7 +25,7 @@ We have provided the API Documentation on the web. For more information, please 
 ## Install
 
 ```bash
-composer require esc-company/good-code-parser
+composer require cable8mm/good-code
 ```
 
 ## Usage
