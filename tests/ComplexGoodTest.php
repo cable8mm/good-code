@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class ComplexGoodTest extends TestCase
 {
-    public function test_파싱이_되는지()
+    public function test_complex_good_codes_can_be_parsed()
     {
         // Arrange
         $goods = [
