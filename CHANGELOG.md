@@ -1,5 +1,13 @@
 # Release Notes
 
+## v2.1.0 - 2025-02-01
+
+### What's Changed
+
+* Add static facade for easy-going by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/good-code/pull/14
+
+**Full Changelog**: https://github.com/cable8mm/good-code/compare/v2.0.0...v2.1.0
+
 ## v2.0.0 - 2025-01-21
 
 ### What's Changed
@@ -80,6 +88,7 @@ Feature : Setcode default value. The patch apply setcode default value.
         // Assert
         $this->assertEquals($parsed, $expect);
     }
+
 
 
 
