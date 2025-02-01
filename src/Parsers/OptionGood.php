@@ -30,7 +30,7 @@ final class OptionGood implements OptionParser
 
         foreach ($options as $option) {
             if ($option['code'] == $optionGood['id'] && $option['name'] == $name) {
-                return $option['mastercode'];
+                return $option['master_code'];
             }
         }
 

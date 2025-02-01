@@ -33,11 +33,22 @@ composer require cable8mm/good-code
 ```php
 <?php
 
-$parsed = (new GoodCodeParser('set7369x4ZZ4235x6'))
-            ->with(SetGood::class)
-            ->get();
+print GoodCode::getSetCodes('set7369x4ZZ4235x6')
+//=> ['7369'=>4,'4235'=>6]
 
-// ['7369'=>4,'4235'=>6]
+print GoodCode::makeSetCode(
+    [
+        '1234' => 2,
+        '5678' => 1,
+    ]
+)
+//=> set1234x2ZZ5678x1
+
+print GoodCode::getId('COM10')
+//=> 10
+
+print GoodCode::getId('GIF239')
+//=> 239
 
 $parsed = (new GoodCodeParser('com2'))->with(ComplexGood::class, [
     1 => 'set11319x1ZZ11626x1ZZ11624x1ZZ11628x1',
@@ -55,18 +66,21 @@ $parsed = (new GoodCodeParser('gif1'))->with(GiftGood::class, [
 
 // set11319x1ZZ11626x1ZZ11624x1ZZ11628x1
 
+$inOptionCode = 'OPT1';
+$inOptionName = 'Super Smash Bros. Ultimate';
+
 $parsed = (new OptionCodeParser($inOptionCode, $inOptionName))
     ->with(OptionGood::class, [
-            ['id' => 1, 'code' => 'OPT1', 'name' => '[네츄럴코어] 미트스틱/씨푸드스틱 6종 20개 소프트간식 모음'],
-            ['id' => 2, 'code' => 'OPT2', 'name' => '[5월사료 20%쿠폰]위시본 연어/소고기/양고기/오리고기 강아지사료 5.4kg/10.89kg 모음'],
+            ['id' => 1, 'code' => 'OPT1', 'name' => 'Nintendo Switch Super Sales'],
+            ['id' => 2, 'code' => 'OPT2', 'name' => 'Playstation Super Sales'],
         ], [
-            ['code' => 1, 'mastercode' => 'COM4', 'name' => '하루애 습식사료 4종 모음(1kg)'],
-            ['code' => 1, 'mastercode' => '3124', 'name' => '에티펫 물티슈 및 애견 위생용품전'],
-            ['code' => 1, 'mastercode' => '1234', 'name' => '(사은품7종)네츄럴코어 사료 6kg/7kg/10kg'],
-            ['code' => 1, 'mastercode' => '4324', 'name' => '(사은품6종 증정)네츄럴코어 유기농 사료 2kg/1.6kg'],
-            ['code' => 2, 'mastercode' => '2314', 'name' => '(인기상품 28종)강아지 배변패드/기저귀'],
-            ['code' => 2, 'mastercode' => '43123', 'name' => '댕댕이가 환장하는 인기 덴탈껌 47종 모음'],
-            ['code' => 2, 'mastercode' => '42342', 'name' => '(닭고기/오리고기 41종) 강아지 대용량 간식 300g'],
+            ['code' => 1, 'master_code' => 'COM4', 'name' => 'Super Smash Bros. Ultimate'],
+            ['code' => 1, 'master_code' => '3124', 'name' => 'Animal Crossing: New Horizons'],
+            ['code' => 1, 'master_code' => '1234', 'name' => 'The Legend of Zelda: Tears of the Kingdom'],
+            ['code' => 1, 'master_code' => '4324', 'name' => 'Super Mario 3D World + Bowser\'s Fury'],
+            ['code' => 2, 'master_code' => '2314', 'name' => 'Call of Duty®: Black Ops 6'],
+            ['code' => 2, 'master_code' => '43123', 'name' => 'Grand Theft Auto V'],
+            ['code' => 2, 'master_code' => '42342', 'name' => 'Marvel\'s Spider-Man 2'],
         ])
     ->get();
 
