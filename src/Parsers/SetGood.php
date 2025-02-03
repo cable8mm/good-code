@@ -3,12 +3,11 @@
 namespace Cable8mm\GoodCodeParser\Parsers;
 
 use Cable8mm\GoodCodeParser\Contracts\Parser;
+use Cable8mm\GoodCodeParser\Enums\GoodCodeType;
 use InvalidArgumentException;
 
 final class SetGood implements Parser
 {
-    const PREFIX = 'set';
-
     const DELIMITER = 'ZZ';
 
     const DELIMITER_COUNT = 'x';
@@ -28,7 +27,7 @@ final class SetGood implements Parser
             throw new InvalidArgumentException('$goods is never used.');
         }
 
-        $escape = preg_replace('/^'.self::PREFIX.'/i', '', $parse);
+        $escape = preg_replace('/^'.GoodCodeType::SET->prefix().'/i', '', $parse);
 
         $goodCodes = explode(self::DELIMITER, $escape);
 

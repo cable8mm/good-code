@@ -7,8 +7,6 @@ use InvalidArgumentException;
 
 final class OptionGood implements OptionParser
 {
-    const PREFIX = 'opt';
-
     /**
      * {@inheritDoc}
      *

@@ -2,6 +2,7 @@
 
 namespace Cable8mm\GoodCodeParser;
 
+use Cable8mm\GoodCodeParser\Enums\GoodCodeType;
 use Cable8mm\GoodCodeParser\Parsers\SetGood;
 
 /**
@@ -19,7 +20,7 @@ class GoodCode
      */
     public static function makeSetCode(array $setCodes): string
     {
-        return SetGood::PREFIX.implode(SetGood::DELIMITER, array_map(function ($v, $k) {
+        return GoodCodeType::SET->prefix().implode(SetGood::DELIMITER, array_map(function ($v, $k) {
             return $k.SetGood::DELIMITER_COUNT.$v;
         }, $setCodes, array_keys($setCodes)));
     }
