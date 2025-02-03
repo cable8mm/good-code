@@ -1,5 +1,13 @@
 # Release Notes
 
+## v2.3.0 - 2025-02-03
+
+### What's Changed
+
+* Redesign all of codes by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/good-code/pull/16
+
+**Full Changelog**: https://github.com/cable8mm/good-code/compare/v2.2.0...v2.3.0
+
 ## v2.2.0 - 2025-02-03
 
 ### What's Changed
@@ -96,6 +104,7 @@ Feature : Setcode default value. The patch apply setcode default value.
         // Assert
         $this->assertEquals($parsed, $expect);
     }
+
 
 
 
