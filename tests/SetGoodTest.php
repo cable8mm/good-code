@@ -1,9 +1,9 @@
 <?php
 
-namespace Cable8mm\GoodCodeParser\Tests;
+namespace Cable8mm\GoodCode\Tests;
 
-use Cable8mm\GoodCodeParser\GoodCodeParser;
-use Cable8mm\GoodCodeParser\Parsers\SetGood;
+use Cable8mm\GoodCode\GoodCodeParser;
+use Cable8mm\GoodCode\Parsers\SetGood;
 use PHPUnit\Framework\TestCase;
 
 class SetGoodTest extends TestCase

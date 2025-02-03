@@ -1,9 +1,9 @@
 <?php
 
-namespace Cable8mm\GoodCodeParser;
+namespace Cable8mm\GoodCode;
 
-use Cable8mm\GoodCodeParser\Enums\GoodCodeType;
-use Cable8mm\GoodCodeParser\Parsers\SetGood;
+use Cable8mm\GoodCode\Enums\GoodCodeType;
+use Cable8mm\GoodCode\Parsers\SetGood;
 
 /**
  * Make set code, option code and so on.

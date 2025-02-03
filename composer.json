@@ -26,12 +26,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Cable8mm\\GoodCodeParser\\": "src/"
+            "Cable8mm\\GoodCode\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Cable8mm\\GoodCodeParser\\Tests\\": "tests/"
+            "Cable8mm\\GoodCode\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "dev",

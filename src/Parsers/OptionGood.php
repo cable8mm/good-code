@@ -1,8 +1,8 @@
 <?php
 
-namespace Cable8mm\GoodCodeParser\Parsers;
+namespace Cable8mm\GoodCode\Parsers;
 
-use Cable8mm\GoodCodeParser\Contracts\OptionParser;
+use Cable8mm\GoodCode\Contracts\OptionParser;
 use InvalidArgumentException;
 
 final class OptionGood implements OptionParser

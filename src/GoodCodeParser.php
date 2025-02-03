@@ -1,8 +1,8 @@
 <?php
 
-namespace Cable8mm\GoodCodeParser;
+namespace Cable8mm\GoodCode;
 
-use Cable8mm\GoodCodeParser\Contracts\Parser;
+use Cable8mm\GoodCode\Contracts\Parser;
 
 /**
  * Good code can be parsed by the GoodCodeParser except option-good codes.

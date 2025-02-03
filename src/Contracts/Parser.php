@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\GoodCodeParser\Contracts;
+namespace Cable8mm\GoodCode\Contracts;
 
 /**
  * Parser interface.

@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\GoodCodeParser\Contracts;
+namespace Cable8mm\GoodCode\Contracts;
 
 /**
  * OptionParser interface. Option Good must be implemented. This method is called when the parser recognizes option good.

@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\GoodCodeParser\Enums;
+namespace Cable8mm\GoodCode\Enums;
 
 enum GoodCodeType
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Cable8mm\GoodCodeParser\Tests;
+namespace Cable8mm\GoodCode\Tests;
 
-use Cable8mm\GoodCodeParser\GoodCode;
+use Cable8mm\GoodCode\GoodCode;
 use PHPUnit\Framework\TestCase;
 
 class GoodCodeTest extends TestCase

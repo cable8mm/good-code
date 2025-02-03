@@ -1,6 +1,6 @@
 <?php
 
-namespace Cable8mm\GoodCodeParser;
+namespace Cable8mm\GoodCode;
 
 /**
  * Option-good code can be parsed by the OptionGoodCodeParser.

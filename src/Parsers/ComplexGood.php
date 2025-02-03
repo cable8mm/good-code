@@ -1,9 +1,9 @@
 <?php
 
-namespace Cable8mm\GoodCodeParser\Parsers;
+namespace Cable8mm\GoodCode\Parsers;
 
-use Cable8mm\GoodCodeParser\Contracts\Parser;
-use Cable8mm\GoodCodeParser\Enums\GoodCodeType;
+use Cable8mm\GoodCode\Contracts\Parser;
+use Cable8mm\GoodCode\Enums\GoodCodeType;
 use InvalidArgumentException;
 
 final class ComplexGood implements Parser
