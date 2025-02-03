@@ -30,61 +30,69 @@ composer require cable8mm/good-code
 
 ## Usage
 
+Facades provides a simple implementation for `set-code`:
+
 ```php
 <?php
-
-print GoodCode::getSetCodes('set7369x4ZZ4235x6')
+print GoodCode::of('SET7369x4zz4235x6')->value();
 //=> ['7369'=>4,'4235'=>6]
 
-print GoodCode::makeSetCode(
+print GoodCode::setCodeOf(
     [
         '1234' => 2,
         '5678' => 1,
     ]
-)
-//=> set1234x2ZZ5678x1
+)->code();
+//=> 'set1234x2ZZ5678x1'
+```
 
-print GoodCode::getId('COM10')
-//=> 10
+Facades provides a simple implementation for `complex-code`:
 
-print GoodCode::getId('GIF239')
-//=> 239
+```php
+print GoodCode::of('COM10', callback: function ($key) {
+    $a = [
+        10 => '123',
+    ];
 
-$parsed = (new GoodCodeParser('com2'))->with(ComplexGood::class, [
-    1 => 'set11319x1ZZ11626x1ZZ11624x1ZZ11628x1',
-    2 => 'set11318x1ZZP3800x1ZZP7776x1ZZP9732x1',
-    3 => 'set11318x1ZZP2526x1ZZP7776x1'
-])->get();
+    return $a[$key];
+})->value();
+//=> '123'
+```
 
-// set11318x1ZZP3800x1ZZP7776x1ZZP9732x1
+Facades provides a simple implementation for `gift-code`:
 
-$parsed = (new GoodCodeParser('gif1'))->with(GiftGood::class, [
-    1 => 'set11319x1ZZ11626x1ZZ11624x1ZZ11628x1',
-    2 => 'set11318x1ZZP3800x1ZZP7776x1ZZP9732x1',
-    3 => 'set11318x1ZZP2526x1ZZP7776x1'
-])->get();
+```php
+print GoodCode::of('GIF11', callback: function ($key) {
+    $a = [
+        11 => '456',
+    ];
 
-// set11319x1ZZ11626x1ZZ11624x1ZZ11628x1
+    return $a[$key];
+});
+//=> '456'
+```
 
-$inOptionCode = 'OPT1';
-$inOptionName = 'Super Smash Bros. Ultimate';
+Facades provides a simple implementation for `option-code`:
 
-$parsed = (new OptionCodeParser($inOptionCode, $inOptionName))
-    ->with(OptionGood::class, [
-            ['id' => 1, 'code' => 'OPT1', 'name' => 'Nintendo Switch Super Sales'],
-            ['id' => 2, 'code' => 'OPT2', 'name' => 'Playstation Super Sales'],
-        ], [
-            ['code' => 1, 'master_code' => 'COM4', 'name' => 'Super Smash Bros. Ultimate'],
-            ['code' => 1, 'master_code' => '3124', 'name' => 'Animal Crossing: New Horizons'],
-            ['code' => 1, 'master_code' => '1234', 'name' => 'The Legend of Zelda: Tears of the Kingdom'],
-            ['code' => 1, 'master_code' => '4324', 'name' => 'Super Mario 3D World + Bowser\'s Fury'],
-            ['code' => 2, 'master_code' => '2314', 'name' => 'Call of Duty®: Black Ops 6'],
-            ['code' => 2, 'master_code' => '43123', 'name' => 'Grand Theft Auto V'],
-            ['code' => 2, 'master_code' => '42342', 'name' => 'Marvel\'s Spider-Man 2'],
-        ])
-    ->get();
+> [!TIP]
+> `option-code` are matching with **both** `option-code` **and** `option-good-option` name. Unfortunately all of online shops like Coupang and 11st have not send any key for option to sellers.
 
-// COM4
+```php
+print GoodCode::of($optionCode, option: $optionName, callback: function ($key, $option) {
+    $a = [
+        10 => [
+            'Super Smash Bros. Ultimate' => 'COM4',
+            'Animal Crossing: New Horizons' => '3124',
+            'The Legend of Zelda: Tears of the Kingdom' => '1234',
+            'Call of Duty®: Black Ops 6' => '2314',
+            'Grand Theft Auto V' => '43123',
+            '42342', 'name' => 'Marvel\'s Spider-Man 2',
+        ],
+    ];
+
+    return $a[$key][$option];
+})->value();
+//=> '3124'
 
 ```
 
