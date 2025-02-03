@@ -14,16 +14,16 @@ enum GoodCodeType
     {
         return match ($this) {
             GoodCodeType::NORMAL => '',
-            GoodCodeType::SET => 'set',
-            GoodCodeType::COMPLEX => 'com',
-            GoodCodeType::GIFT => 'gif',
-            GoodCodeType::OPTION => 'opt',
+            GoodCodeType::SET => 'SET',
+            GoodCodeType::COMPLEX => 'COM',
+            GoodCodeType::GIFT => 'GIF',
+            GoodCodeType::OPTION => 'OPT',
         };
     }
 
     public static function of(string $code): GoodCodeType
     {
-        $prefix = substr($code, 0, 3);
+        $prefix = strtoupper(substr($code, 0, 3));
 
         return match ($prefix) {
             GoodCodeType::SET->prefix() => GoodCodeType::SET,
