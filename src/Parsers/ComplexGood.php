@@ -3,12 +3,11 @@
 namespace Cable8mm\GoodCodeParser\Parsers;
 
 use Cable8mm\GoodCodeParser\Contracts\Parser;
+use Cable8mm\GoodCodeParser\Enums\GoodCodeType;
 use InvalidArgumentException;
 
 final class ComplexGood implements Parser
 {
-    const PREFIX = 'com';
-
     /**
      * {@inheritDoc}
      *
@@ -20,7 +19,7 @@ final class ComplexGood implements Parser
             throw new InvalidArgumentException('$goods must be an array');
         }
 
-        $key = preg_replace('/^'.self::PREFIX.'/i', '', $code);
+        $key = preg_replace('/^'.GoodCodeType::COMPLEX->prefix().'/i', '', $code);
 
         return $goods[$key];
     }
