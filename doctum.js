@@ -1,5 +1,5 @@
 var Doctum = {
-    treeJson: {"tree":{"l":0,"n":"","p":"","c":[{"l":1,"n":"Cable8mm","p":"Cable8mm","c":[{"l":2,"n":"GoodCode","p":"Cable8mm/GoodCode","c":[{"l":3,"n":"GoodCode","p":"Cable8mm/GoodCode/GoodCode"}]}]}]},"treeOpenLevel":2},
+    treeJson: {"tree":{"l":0,"n":"","p":"","c":[{"l":1,"n":"Cable8mm","p":"Cable8mm","c":[{"l":2,"n":"GoodCode","p":"Cable8mm/GoodCode","c":[{"l":3,"n":"ValueObjects","p":"Cable8mm/GoodCode/ValueObjects","c":[{"l":4,"n":"SetGood","p":"Cable8mm/GoodCode/ValueObjects/SetGood"}]},{"l":3,"n":"GoodCode","p":"Cable8mm/GoodCode/GoodCode"}]}]}]},"treeOpenLevel":2},
     /** @var boolean */
     treeLoaded: false,
     /** @var boolean */

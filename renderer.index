@@ -1,1 +1,1 @@
-O:21:"Doctum\Renderer\Index":3:{i:0;a:1:{s:26:"Cable8mm\GoodCode\GoodCode";s:40:"c04632af1f588b10f970cb6f9a8f60cb367b06c7";}i:1;a:1:{i:0;s:4:"main";}i:2;a:2:{i:0;s:8:"Cable8mm";i:1;s:17:"Cable8mm\GoodCode";}}
+O:21:"Doctum\Renderer\Index":3:{i:0;a:2:{s:26:"Cable8mm\GoodCode\GoodCode";s:40:"558ae862661b676f15b92ff6fe6f0da77f1a3db6";s:38:"Cable8mm\GoodCode\ValueObjects\SetGood";s:40:"370a3ae2edb340bb528e33db74f3c92f2b6a7bb8";}i:1;a:1:{i:0;s:4:"main";}i:2;a:3:{i:0;s:8:"Cable8mm";i:1;s:17:"Cable8mm\GoodCode";i:2;s:30:"Cable8mm\GoodCode\ValueObjects";}}

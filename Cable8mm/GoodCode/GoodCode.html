@@ -97,27 +97,6 @@
             <p><p>Make set code, option code and so on.</p></p>                    </div>
             
         
-            <h2>Constants</h2>    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                                                                                                        SET_CODE_DELIMITER
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                                                                                        SET_CODE_DELIMITER_COUNT
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-            </table>
-
     
     
             <h2>Methods</h2>
@@ -207,16 +186,6 @@
                                             <p><p>Make SetCode from key-value set code array.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getSetCodes">getSetCodes</a>(string $setCode)
-        
-                                            <p><p>Find set-good code by parsing. A set of good code aka set-code is a combination of two more goods codes.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
             </div>
 
 
@@ -225,7 +194,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line 20</div>
+        <div class="location">at line 16</div>
         <code>                    
     <strong>__construct</strong>(string $code, <abbr title="Cable8mm\GoodCode\Enums\GoodCodeType">GoodCodeType</abbr> $originType)
         </code>
@@ -264,7 +233,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_code">
-        <div class="location">at line 27</div>
+        <div class="location">at line 23</div>
         <code>                    string
     <strong>code</strong>()
         </code>
@@ -297,7 +266,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_originalType">
-        <div class="location">at line 32</div>
+        <div class="location">at line 28</div>
         <code>                    <abbr title="Cable8mm\GoodCode\Enums\GoodCodeType">GoodCodeType</abbr>
     <strong>originalType</strong>()
         </code>
@@ -330,7 +299,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_type">
-        <div class="location">at line 37</div>
+        <div class="location">at line 33</div>
         <code>                    <abbr title="Cable8mm\GoodCode\Enums\GoodCodeType">GoodCodeType</abbr>
     <strong>type</strong>()
         </code>
@@ -363,7 +332,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_value">
-        <div class="location">at line 48</div>
+        <div class="location">at line 46</div>
         <code>                    <abbr title="Cable8mm\GoodCode\int|string|array">int|string|array</abbr>
     <strong>value</strong>()
         </code>
@@ -389,6 +358,15 @@ the code shouldn't be option, complex and gift code.</p></p>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/BadFunctionCallException">BadFunctionCallException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -397,7 +375,7 @@ the code shouldn't be option, complex and gift code.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getId">
-        <div class="location">at line 67</div>
+        <div class="location">at line 65</div>
         <code>        static            int
     <strong>getId</strong>(string $code)
         </code>
@@ -439,7 +417,7 @@ the code shouldn't be option, complex and gift code.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_of">
-        <div class="location">at line 80</div>
+        <div class="location">at line 78</div>
         <code>        static            <a href="../../Cable8mm/GoodCode/GoodCode.html"><abbr title="Cable8mm\GoodCode\GoodCode">GoodCode</abbr></a>
     <strong>of</strong>(string $code, string|null $option = null, callable|null $callback = null)
         </code>
@@ -491,7 +469,7 @@ the code shouldn't be option, complex and gift code.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setCodeOf">
-        <div class="location">at line 104</div>
+        <div class="location">at line 102</div>
         <code>        static            <a href="../../Cable8mm/GoodCode/GoodCode.html"><abbr title="Cable8mm\GoodCode\GoodCode">GoodCode</abbr></a>
     <strong>setCodeOf</strong>(array $setCodes)
         </code>
@@ -535,57 +513,6 @@ the code shouldn't be option, complex and gift code.</p></p>
             </tr>
             </table>
 
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getSetCodes">
-        <div class="location">at line 135</div>
-        <code>        static            array
-    <strong>getSetCodes</strong>(string $setCode)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Find set-good code by parsing. A set of good code aka set-code is a combination of two more goods codes.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$setCode</td>
-                <td><p>&quot;set1232x3ZZ322ZZ4313x4&quot; means &quot;1232&quot; x 3 + &quot;322&quot; x 4 + &quot;4313&quot; x 4. &quot;1232&quot;, &quot;322&quot; and &quot;4312&quot; are good codes.</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td><p>The method returns good code array</p></td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
                     </div>
     </div>
 
