@@ -16,11 +16,11 @@ We have provided the API Documentation on the web. For more information, please 
 
 ## Features
 
-- [x] General good code parser
+- [x] Normal good code parser
 - [x] Gift good code parser
 - [x] Set good code parser
 - [x] Complex good code parser
-- [x] Option Good code parser(No code, name matched by name)
+- [x] Option Good code parser(No code, it matched by name)
 
 ## Install
 
@@ -94,6 +94,16 @@ print GoodCode::of($optionCode, option: $optionName, callback: function ($key, $
 })->value();
 //=> '3124'
 
+```
+
+Special value object - `SetGood`
+
+```php
+print SetGood::of('SET43x3zz253x3')->goods();
+//=> ['43' => 3, '253' => 3]
+
+print SetGood::ofArray(['43' => 3, '253' => 3])->code();
+//=> SET43x3zz253x3
 ```
 
 ## Formatting
