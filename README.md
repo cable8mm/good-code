@@ -30,36 +30,71 @@ composer require cable8mm/good-code
 
 ## Usage
 
-Facades provides a simple implementation for `set-code`:
+### Production codes for Laravel
+
+Visit repository - <https://github.com/cable8mm/aipro>
+
+```php
+/**
+ * For option products, retrieve the master_code of the option and update it.
+ */
+if (GoodCodeType::of($this->data->get('sellerGoodsCd')) == GoodCodeType::OPTION) {
+    $code = GoodCode::of(
+        $this->data->get('sellerGoodsCd'),
+        option: $this->data->get('option'),
+        callback: function ($key, $option) {
+            return OptionGood::findMasterCode($key)->option($option)->first()->masterCode();
+        }
+    )->code();
+
+    $this->data->put('masterGoodsCd', $code);
+}
+```
+
+```php
+/**
+ * For composite and gift products, retrieve the set product and update the master_code.
+ */
+if (
+    GoodCodeType::of($this->data->get('sellerGoodsCd')) == GoodCodeType::COMPLEX
+    || GoodCodeType::of($this->data->get('sellerGoodsCd')) == GoodCodeType::GIFT
+) {
+    $code = GoodCode::of(
+        $this->data->get('sellerGoodsCd'),
+        callback: function ($key) {
+            return SetGood::findComCode($key)->master_code;
+        }
+    )->code();
+
+    $this->data->put('masterGoodsCd', $code);
+}
+```
+
+### Example codes
+
+#### `set-code`
 
 ```php
 <?php
 print GoodCode::of('SET7369x4zz4235x6')->value();
 //=> ['7369'=>4,'4235'=>6]
 
-print GoodCode::setCodeOf(
-    [
-        '1234' => 2,
-        '5678' => 1,
-    ]
-)->code();
+print GoodCode::setCodeOf(['1234' => 2, '5678' => 1,])->code();
 //=> 'set1234x2ZZ5678x1'
 ```
 
-Facades provides a simple implementation for `complex-code`:
+#### `complex-code`
 
 ```php
 print GoodCode::of('COM10', callback: function ($key) {
-    $a = [
-        10 => '123',
-    ];
+    $a = [ 10 => '123'];
 
     return $a[$key];
 })->value();
 //=> '123'
 ```
 
-Facades provides a simple implementation for `gift-code`:
+#### `gift-code`
 
 ```php
 print GoodCode::of('GIF11', callback: function ($key) {
@@ -72,7 +107,7 @@ print GoodCode::of('GIF11', callback: function ($key) {
 //=> '456'
 ```
 
-Facades provides a simple implementation for `option-code`:
+#### `option-code`
 
 > [!TIP]
 > `option-code` are matching with **both** `option-code` **and** `option-good-option` name. Unfortunately all of online shops like Coupang and 11st have not send any key for option to sellers.
@@ -96,7 +131,7 @@ print GoodCode::of($optionCode, option: $optionName, callback: function ($key, $
 
 ```
 
-Special value object - `SetGood`
+### Special value object - `SetGood`
 
 ```php
 print SetGood::of('SET43x3zz253x3')->goods();
