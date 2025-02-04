@@ -16,6 +16,7 @@ class GoodCodeTypeTest extends TestCase
             'OPT10' => GoodCodeType::OPTION,
             'COM10' => GoodCodeType::COMPLEX,
             'GIF10' => GoodCodeType::GIFT,
+            'SETPM195x5' => GoodCodeType::SET,
         ];
 
         foreach ($goodCodes as $goodCode => $goodCodeType) {

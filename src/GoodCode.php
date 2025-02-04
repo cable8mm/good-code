@@ -4,17 +4,13 @@ namespace Cable8mm\GoodCode;
 
 use BadFunctionCallException;
 use Cable8mm\GoodCode\Enums\GoodCodeType;
-use InvalidArgumentException;
+use Cable8mm\GoodCode\ValueObjects\SetGood;
 
 /**
  * Make set code, option code and so on.
  */
 class GoodCode
 {
-    const SET_CODE_DELIMITER = 'zz';
-
-    const SET_CODE_DELIMITER_COUNT = 'x';
-
     private GoodCodeType $type;
 
     public function __construct(
@@ -44,6 +40,8 @@ class GoodCode
      * If the code is set code, it will be array of good values.
      * If the code is normal code, it will be good code string.
      * the code shouldn't be option, complex and gift code.
+     *
+     * @throws BadFunctionCallException
      */
     public function value(): int|string|array
     {
@@ -52,7 +50,7 @@ class GoodCode
         }
 
         if ($this->type == GoodCodeType::SET) {
-            return self::getSetCodes($this->code);
+            return SetGood::of($this->code)->goods();
         }
 
         return $this->code;
@@ -96,7 +94,7 @@ class GoodCode
     /**
      * Make SetCode from key-value set code array.
      *
-     * @param  array  $setCodes  key-value set code array
+     * @param  array<string,int>  $setCodes  key-value set code array
      * @return GoodCode The method returns GoodCode instance with the SetCode array
      *
      * @example GoodCode::setCodeOf(['7369'=>4,'4235'=>6])
@@ -104,51 +102,8 @@ class GoodCode
     public static function setCodeOf(array $setCodes): GoodCode
     {
         return new GoodCode(
-            self::makeSetCode($setCodes),
+            SetGood::ofArray($setCodes)->code(),
             GoodCodeType::SET
         );
-    }
-
-    /**
-     * Make SetCode from key-value set code array.
-     *
-     * @param  array  $setCodes  key-value set code array
-     * @return string The method returns GoodCode instance with the SetCode string
-     *
-     * @example GoodCode::setCodeOf(['7369'=>4,'4235'=>6])
-     */
-    private static function makeSetCode(array $setCodes): string
-    {
-        return GoodCodeType::SET->prefix().implode(self::SET_CODE_DELIMITER, array_map(function ($v, $k) {
-            return $k.self::SET_CODE_DELIMITER_COUNT.$v;
-        }, $setCodes, array_keys($setCodes)));
-    }
-
-    /**
-     * Find set-good code by parsing. A set of good code aka set-code is a combination of two more goods codes.
-     *
-     * @param  string  $setCode  "set1232x3ZZ322ZZ4313x4" means "1232" x 3 + "322" x 4 + "4313" x 4. "1232", "322" and "4312" are good codes.
-     * @return array The method returns good code array
-     *
-     * @throws InvalidArgumentException
-     */
-    public static function getSetCodes(string $setCode): array
-    {
-        $escape = preg_replace('/^'.GoodCodeType::SET->prefix().'/i', '', $setCode);
-
-        $goodCodes = explode(self::SET_CODE_DELIMITER, $escape);
-
-        $parsedCodes = [];
-
-        foreach ($goodCodes as $code) {
-            if (preg_match('/'.self::SET_CODE_DELIMITER_COUNT.'/i', $code)) {
-                [$k, $v] = explode(self::SET_CODE_DELIMITER_COUNT, $code);
-            } else {
-                [$k, $v] = [$code, 1];
-            }
-            $parsedCodes[$k] = $v;
-        }
-
-        return $parsedCodes;
     }
 }
