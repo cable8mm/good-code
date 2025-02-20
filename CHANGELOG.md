@@ -1,5 +1,15 @@
 # Release Notes
 
+## v2.5.0 - 2025-02-20
+
+### What's Changed
+
+* Give production codes on the README by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/good-code/pull/18
+* Write comments of classes all by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/good-code/pull/19
+* Add receipt code classes by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/good-code/pull/20
+
+**Full Changelog**: https://github.com/cable8mm/good-code/compare/v2.4.0...v2.5.0
+
 ## v2.4.0 - 2025-02-04
 
 ### What's Changed
@@ -112,6 +122,7 @@ Feature : Setcode default value. The patch apply setcode default value.
         // Assert
         $this->assertEquals($parsed, $expect);
     }
+
 
 
 
