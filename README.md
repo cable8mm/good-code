@@ -35,6 +35,12 @@ composer require cable8mm/good-code
 Visit repository - <https://github.com/cable8mm/aipro>
 
 ```php
+<?php
+
+use App\Models\OptionGood;
+use Cable8mm\GoodCode\Enums\GoodCodeType;
+use Cable8mm\GoodCode\GoodCode;
+
 /**
  * For option products, retrieve the master_code of the option and update it.
  */
@@ -52,6 +58,12 @@ if (GoodCodeType::of($this->data->get('sellerGoodsCd')) == GoodCodeType::OPTION)
 ```
 
 ```php
+<?php
+
+use Cable8mm\GoodCode\Enums\GoodCodeType;
+use Cable8mm\GoodCode\GoodCode;
+use Cable8mm\GoodCode\ValueObjects\SetGood;
+
 /**
  * For composite and gift products, retrieve the set product and update the master_code.
  */
@@ -76,6 +88,9 @@ if (
 
 ```php
 <?php
+
+use Cable8mm\GoodCode\GoodCode;
+
 print GoodCode::of('SET7369x4zz4235x6')->value();
 //=> ['7369'=>4,'4235'=>6]
 
@@ -86,6 +101,10 @@ print GoodCode::setCodeOf(['1234' => 2, '5678' => 1,])->code();
 #### `complex-code`
 
 ```php
+<?php
+
+use Cable8mm\GoodCode\GoodCode;
+
 print GoodCode::of('COM10', callback: function ($key) {
     $a = [ 10 => '123'];
 
@@ -97,6 +116,10 @@ print GoodCode::of('COM10', callback: function ($key) {
 #### `gift-code`
 
 ```php
+<?php
+
+use Cable8mm\GoodCode\GoodCode;
+
 print GoodCode::of('GIF11', callback: function ($key) {
     $a = [
         11 => '456',
@@ -113,6 +136,10 @@ print GoodCode::of('GIF11', callback: function ($key) {
 > `option-code` are matching with **both** `option-code` **and** `option-good-option` name. Unfortunately all of online shops like Coupang and 11st have not send any key for option to sellers.
 
 ```php
+<?php
+
+use Cable8mm\GoodCode\GoodCode;
+
 print GoodCode::of($optionCode, option: $optionName, callback: function ($key, $option) {
     $a = [
         10 => [
@@ -134,6 +161,10 @@ print GoodCode::of($optionCode, option: $optionName, callback: function ($key, $
 ### Special value object - `SetGood`
 
 ```php
+<?php
+
+use Cable8mm\GoodCode\ValueObjects\SetGood;
+
 print SetGood::of('SET43x3zz253x3')->goods();
 //=> ['43' => 3, '253' => 3]
 
