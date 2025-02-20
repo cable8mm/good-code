@@ -11,8 +11,17 @@ use Cable8mm\GoodCode\ValueObjects\SetGood;
  */
 class GoodCode
 {
+    /**
+     * @var GoodCodeType The type of the code
+     */
     private GoodCodeType $type;
 
+    /**
+     * Constructor.
+     *
+     * @param  string  $code  The code
+     * @param  \Cable8mm\GoodCode\Enums\GoodCodeType  $originType  The type of the code
+     */
     public function __construct(
         private string $code,
         private GoodCodeType $originType,
@@ -20,16 +29,25 @@ class GoodCode
         $this->type = GoodCodeType::of($code);
     }
 
+    /**
+     * Gets the `code` property
+     */
     public function code(): string
     {
         return $this->code;
     }
 
+    /**
+     * Gets the `originalType` property
+     */
     public function originalType(): GoodCodeType
     {
         return $this->originType;
     }
 
+    /**
+     * Gets the `type` property
+     */
     public function type(): GoodCodeType
     {
         return $this->type;

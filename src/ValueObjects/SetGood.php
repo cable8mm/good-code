@@ -3,17 +3,31 @@
 namespace Cable8mm\GoodCode\ValueObjects;
 
 use Cable8mm\GoodCode\Enums\GoodCodeType;
-use Cable8mm\GoodCode\GoodCode;
 use InvalidArgumentException;
+use Stringable;
 
-class SetGood
+class SetGood implements Stringable
 {
+    /**
+     * The delimiter for multiple good code
+     */
     const DELIMITER = 'zz';
 
+    /**
+     * The delimiter for good count
+     */
     const DELIMITER_COUNT = 'x';
 
+    /**
+     * @var array<string,string> array of good code and count
+     */
     private array $goods;
 
+    /**
+     * Constructor.
+     *
+     * @param  string  $code  The name of the good code
+     */
     private function __construct(private readonly string $code)
     {
         $this->pipe();
@@ -35,6 +49,12 @@ class SetGood
         }
     }
 
+    /**
+     * Create SetGood instance from code.
+     *
+     * @param  string  $code  The set code string
+     * @return SetGood The method returns SetGood instance with the SetCode string
+     */
     public static function of(string $code): SetGood
     {
         if (! preg_match('/^'.GoodCodeType::SET->prefix().'/i', $code)) {
@@ -47,10 +67,10 @@ class SetGood
     /**
      * Create SetGood instance from key-value set code array.
      *
-     * @param  array<string,string>  $setCodes  key-value set code array
+     * @param  array<string,int>  $setCodes  key-value set code array
      * @return SetGood The method returns SetGood instance with the SetCode string
      *
-     * @example GoodCode::setCodeOf(['7369'=>4,'4235'=>6]) => SET7369x4zz42335x6
+     * @example SetGood::ofArray(['7369'=>4,'4235'=>6]) => SET7369x4zz42335x6
      */
     public static function ofArray(array $setCodes): SetGood
     {
@@ -61,17 +81,30 @@ class SetGood
         return static::of($code);
     }
 
+    /**
+     * Gets a `code` property.
+     *
+     * @return string The method returns `code` property
+     */
     public function code(): string
     {
         return $this->code;
     }
 
+    /**
+     * Gets a `goods` property.
+     *
+     * @return array The method returns `goods` property
+     */
     public function goods(): array
     {
         return $this->goods;
     }
 
-    public function toString(): string
+    /**
+     * Gets a string representation of the object.
+     */
+    public function __toString(): string
     {
         return $this->code;
     }
