@@ -21,6 +21,7 @@ We have provided the API Documentation on the web. For more information, please 
 - [x] Set good code parser
 - [x] Complex good code parser
 - [x] Option Good code parser(No code, it matched by name)
+- [x] Receipt code parser
 
 ## Install
 
@@ -170,6 +171,33 @@ print SetGood::of('SET43x3zz253x3')->goods();
 
 print SetGood::ofArray(['43' => 3, '253' => 3])->code();
 //=> SET43x3zz253x3
+```
+
+### Receipt Code
+
+```php
+<?php
+
+use Cable8mm\GoodCode\ReceiptCode;
+
+print ReceiptCode::of('PO-20250312-0001')->code;
+//=> PO-20250312-0001
+
+print ReceiptCode::of('PO-20250312-0001')->prefix;
+//=> PO
+
+print ReceiptCode::of('PO-20250312-0001')->ymd;
+//=> 20250312
+
+print ReceiptCode::of('PO-20250312-0001')->number;
+//=> 0001
+
+print ReceiptCode::of('PO-20250312-0001')->nextCode();
+//=> PO-20250312-0002
+
+print ReceiptCode::make()->nextCode();
+//=> PO-[Today's ymd]-0001
+
 ```
 
 ## Formatting
