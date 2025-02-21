@@ -1,5 +1,13 @@
 # Release Notes
 
+## v2.6.0 - 2025-02-21
+
+### What's Changed
+
+* Set `prefix` of receipt code changeable by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/good-code/pull/22
+
+**Full Changelog**: https://github.com/cable8mm/good-code/compare/v2.5.1...v2.6.0
+
 ## v2.5.1 - 2025-02-21
 
 ### What's Changed
@@ -130,6 +138,7 @@ Feature : Setcode default value. The patch apply setcode default value.
         // Assert
         $this->assertEquals($parsed, $expect);
     }
+
 
 
 
