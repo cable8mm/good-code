@@ -82,12 +82,12 @@ class ReceiptCode implements Stringable
     /**
      * Create a new instance of ReceiptCode.
      *
-     * @param  string  $code  ReceiptCode
+     * @param  string|null  $code  ReceiptCode
      * @return static Provides a new instance of ReceiptCode
      */
-    public static function of(string $code): self
+    public static function of(?string $code = null): self
     {
-        return new self($code);
+        return is_null($code) ? self::make() : new self($code);
     }
 
     /**
