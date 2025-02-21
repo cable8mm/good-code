@@ -29,5 +29,7 @@ class ReceiptCodeTest extends TestCase
     public function test_no_code()
     {
         $this->assertEquals('PO-'.date('Ymd').'-0001', ReceiptCode::make()->nextCode());
+
+        $this->assertEquals('PO-'.date('Ymd').'-0001', ReceiptCode::of()->nextCode());
     }
 }
