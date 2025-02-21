@@ -1,5 +1,13 @@
 # Release Notes
 
+## v2.5.1 - 2025-02-21
+
+### What's Changed
+
+* Set `of()` to be nullable in `ReceiptCode` by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/good-code/pull/21
+
+**Full Changelog**: https://github.com/cable8mm/good-code/compare/v2.5.0...v2.5.1
+
 ## v2.5.0 - 2025-02-20
 
 ### What's Changed
@@ -122,6 +130,7 @@ Feature : Setcode default value. The patch apply setcode default value.
         // Assert
         $this->assertEquals($parsed, $expect);
     }
+
 
 
 
