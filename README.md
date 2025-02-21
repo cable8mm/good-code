@@ -195,9 +195,11 @@ print ReceiptCode::of('PO-20250312-0001')->number;
 print ReceiptCode::of('PO-20250312-0001')->nextCode();
 //=> PO-20250312-0002
 
-print ReceiptCode::make()->nextCode();
+print ReceiptCode::of()->nextCode();
 //=> PO-[Today's ymd]-0001
 
+print ReceiptCode::of(prefix: 'CT')->nextCode();
+//=> CT-[Today's ymd]-0001
 ```
 
 ## Formatting

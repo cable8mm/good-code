@@ -8,11 +8,6 @@ use Stringable;
 class ReceiptCode implements Stringable
 {
     /**
-     * Prefix of the receipt code
-     */
-    public string $prefix = 'PO';
-
-    /**
      * Year month day of the receipt code
      */
     public string $ymd;
@@ -33,7 +28,11 @@ class ReceiptCode implements Stringable
      * @param  string|null  $code  ReceiptCode
      */
     private function __construct(
-        ?string $code = null,
+        /**
+         * Prefix of the receipt code
+         */
+        public string $prefix,
+        ?string $code = null
     ) {
         if (! is_null($code)) {
             $this->code($code);
@@ -62,9 +61,10 @@ class ReceiptCode implements Stringable
      *
      * @return string Next code
      *
-     * @example ReceiptCode::make()->nextCode() => PO-20250312-0001
-     * @example ReceiptCode::make()->code('PO-20250312-0001')->nextCode() => PO-20250312-0002
-     * @example ReceiptCode::make()->code('PO-20250312-9999')->nextCode() => PO-20250312-10000
+     * @example ReceiptCode::of()->nextCode() => PO-20250312-0001
+     * @example ReceiptCode::of('PO-20250312-0001')->nextCode() => PO-20250312-0002
+     * @example ReceiptCode::of('PO-20250312-9999')->nextCode() => PO-20250312-10000
+     * @example ReceiptCode::of('PO-20250312-9999', prefix: 'CT')->nextCode() => CT-20250312-10000
      */
     public function nextCode(): string
     {
@@ -82,22 +82,13 @@ class ReceiptCode implements Stringable
     /**
      * Create a new instance of ReceiptCode.
      *
-     * @param  string|null  $code  ReceiptCode
+     * @param  string|null  $code  receipt code
+     * @param  string|null  $prefix  prefix of the receipt code, default is 'PO'
      * @return static Provides a new instance of ReceiptCode
      */
-    public static function of(?string $code = null): self
+    public static function of(?string $code = null, ?string $prefix = 'PO'): self
     {
-        return is_null($code) ? self::make() : new self($code);
-    }
-
-    /**
-     * Create a new instance of ReceiptCode.
-     *
-     * @return static Provides a new instance of ReceiptCode
-     */
-    public static function make(): self
-    {
-        return new self;
+        return is_null($code) ? new self(prefix: $prefix) : new self($prefix, $code);
     }
 
     /**
