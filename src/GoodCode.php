@@ -7,12 +7,18 @@ use Cable8mm\GoodCode\Enums\GoodCodeType;
 use Cable8mm\GoodCode\ValueObjects\SetGood;
 
 /**
- * Make set code, option code and so on.
+ * Class GoodCode
+ *
+ * This class makes a set code, option code and so on.
+ *
+ * @author Samgu Lee <cable8mm@gmail.com>
+ *
+ * @since  2025-02-04
  */
 class GoodCode
 {
     /**
-     * @var GoodCodeType The type of the code
+     * The type of the code
      */
     private GoodCodeType $type;
 

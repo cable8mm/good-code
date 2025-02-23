@@ -6,6 +6,15 @@ use Cable8mm\GoodCode\Enums\GoodCodeType;
 use InvalidArgumentException;
 use Stringable;
 
+/**
+ * Class SetGood
+ *
+ * This class is a value object for SetGood object.
+ *
+ * @author Samgu Lee <cable8mm@gmail.com>
+ *
+ * @since  2025-02-04
+ */
 class SetGood implements Stringable
 {
     /**
