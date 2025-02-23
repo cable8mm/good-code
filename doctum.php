@@ -8,8 +8,7 @@ $dir = getcwd().'/src';
 $iterator = Finder::create()
     ->files()
     ->name('*.php')
-    ->exclude('Resources')
-    ->exclude('Tests')
+    ->exclude('tests')
     ->in($dir);
 
 return new Doctum($iterator, [

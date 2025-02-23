@@ -4,6 +4,15 @@ namespace Cable8mm\GoodCode;
 
 use Stringable;
 
+/**
+ * Class Location
+ *
+ * This class represents a warehouse location identified by warehouse, rack, and shelf. The location code is generated from these properties.
+ *
+ * @author Samgu Lee <cable8mm@gmail.com>
+ *
+ * @since  2025-02-24
+ */
 class Location implements Stringable
 {
     /**
@@ -53,6 +62,13 @@ class Location implements Stringable
         $this->locationCode = preg_replace('/-+/', '-', $this->locationCode);
     }
 
+    /**
+     * Get the location code.
+     *
+     * @return string The method returns the location code
+     *
+     * @example print Location::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32')->locationCode();
+     */
     public function locationCode(): string
     {
         return $this->locationCode;
@@ -98,6 +114,14 @@ class Location implements Stringable
         );
     }
 
+    /**
+     * Get the string representation of the location.
+     *
+     * @return string The magic method returns the location code
+     *
+     * @example print Location::of(warehouse: 'A1') => 'A1'
+     * @example print Location::of(warehouse: 'A1', rack: 'B3') => 'A1-B3'
+     */
     public function __toString(): string
     {
         return $this->locationCode;

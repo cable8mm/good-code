@@ -5,6 +5,15 @@ namespace Cable8mm\GoodCode;
 use InvalidArgumentException;
 use Stringable;
 
+/**
+ * Class ReceiptCode
+ *
+ * This class represents a receipt code identified by code, prefix, ymd and number. The receipt code is generated from these properties.
+ *
+ * @author Samgu Lee <cable8mm@gmail.com>
+ *
+ * @since  2025-02-21
+ */
 class ReceiptCode implements Stringable
 {
     /**
