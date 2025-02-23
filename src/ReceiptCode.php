@@ -6,8 +6,6 @@ use InvalidArgumentException;
 use Stringable;
 
 /**
- * Class ReceiptCode
- *
  * This class represents a receipt code identified by code, prefix, ymd and number. The receipt code is generated from these properties.
  *
  * @author Samgu Lee <cable8mm@gmail.com>

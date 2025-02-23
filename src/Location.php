@@ -5,8 +5,6 @@ namespace Cable8mm\GoodCode;
 use Stringable;
 
 /**
- * Class Location
- *
  * This class represents a warehouse location identified by warehouse, rack, and shelf. The location code is generated from these properties.
  *
  * @author Samgu Lee <cable8mm@gmail.com>

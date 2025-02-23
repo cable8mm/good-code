@@ -2,6 +2,13 @@
 
 namespace Cable8mm\GoodCode\Enums;
 
+/**
+ * This class represents a good code type.
+ *
+ * @author Samgu Lee <cable8mm@gmail.com>
+ *
+ * @since  2025-02-04
+ */
 enum GoodCodeType
 {
     case NORMAL;
