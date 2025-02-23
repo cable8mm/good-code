@@ -7,8 +7,6 @@ use InvalidArgumentException;
 use Stringable;
 
 /**
- * Class SetGood
- *
  * This class is a value object for SetGood object.
  *
  * @author Samgu Lee <cable8mm@gmail.com>
