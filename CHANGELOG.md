@@ -1,5 +1,13 @@
 # Release Notes
 
+## v2.7.0 - 2025-02-23
+
+### What's Changed
+
+* Add `Location` class for `locationCode()` method by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/good-code/pull/23
+
+**Full Changelog**: https://github.com/cable8mm/good-code/compare/v2.6.0...v2.7.0
+
 ## v2.6.0 - 2025-02-21
 
 ### What's Changed
@@ -138,6 +146,7 @@ Feature : Setcode default value. The patch apply setcode default value.
         // Assert
         $this->assertEquals($parsed, $expect);
     }
+
 
 
 
