@@ -22,6 +22,7 @@ We have provided the API Documentation on the web. For more information, please 
 - [x] Complex good code parser
 - [x] Option Good code parser(No code, it matched by name)
 - [x] Receipt code parser
+- [x] Location code parser
 
 ## Install
 
@@ -200,6 +201,15 @@ print ReceiptCode::of()->nextCode();
 
 print ReceiptCode::of(prefix: 'CT')->nextCode();
 //=> CT-[Today's ymd]-0001
+```
+
+### Location Code
+
+```php
+print Location::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32')->locationCode();
+print Location::of(['warehouse' => 'AUK', 'rack' => 'R3', 'shelf' => 'S32')->locationCode();
+print Location::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32'); //` Stringable` supported
+//=> AUK-R3-S32
 ```
 
 ## Formatting
