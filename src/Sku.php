@@ -5,24 +5,24 @@ namespace Cable8mm\GoodCode;
 use Stringable;
 
 /**
- * This class represents a box code identified by code and prefix. The box code is generated from these properties.
+ * This class represents a SKU identified by code and prefix. The SKU is generated from these properties.
  *
  * @author Samgu Lee <cable8mm@gmail.com>
  *
  * @since  2025-02-24
  */
-class BoxCode implements Stringable
+class Sku implements Stringable
 {
     /**
-     * Code representing the box
+     * Code representing the SKU
      *
      * @example BO123
      */
-    private string $boxCode;
+    private string $sku;
 
     private function __construct(
         /**
-         * Box code
+         * The code for the sku
          *
          * @example 123
          */
@@ -34,27 +34,26 @@ class BoxCode implements Stringable
          */
         private ?string $prefix = null
     ) {
-        $this->boxCode = $prefix.$code;
+        $this->sku = $prefix.$code;
     }
 
     /**
-     * Get the box code.
+     * Get the SKU.
      *
-     * @return string The method returns the box code
+     * @return string The method returns the SKU
      *
-     * @example print BoxCode::of(123, prefix: 'BO')->boxCode();    => 'BO123'
-     * @example print BoxCode::of(123, prefix: 'BO');               => 'BO123'
+     * @example print Sku::of(123, prefix: 'BO');    => 'BO123'
      */
-    public function boxCode(): string
+    public function sku(): string
     {
-        return $this->boxCode;
+        return $this->sku;
     }
 
     /**
-     * Create a new box code instance.
+     * Create a new SKU instance.
      *
-     * @param  string|int  $code  The box code
-     * @param  string|null  $prefix  Prefix for the box code
+     * @param  string|int  $code  The SKU
+     * @param  string|null  $prefix  Prefix for the SKU
      * @return self Provides fluent interface
      *
      * @throws \InvalidArgumentException
@@ -83,15 +82,15 @@ class BoxCode implements Stringable
     }
 
     /**
-     * Get the string representation of the box code.
+     * Get the string representation of the SKU.
      *
-     * @return string The magic method returns the box code
+     * @return string The magic method returns the SKU
      *
-     * @example print BoxCode::of('1') => 'A1'
-     * @example print BoxCode::of('1', prefix: 'BO') => 'BO1'
+     * @example print Sku::of('1') => 'A1'
+     * @example print Sku::of('1', prefix: 'BO') => 'BO1'
      */
     public function __toString(): string
     {
-        return $this->boxCode;
+        return $this->sku;
     }
 }
