@@ -11,7 +11,7 @@ use Stringable;
  *
  * @since  2025-02-24
  */
-class Location implements Stringable
+class LocationCode implements Stringable
 {
     /**
      * Code representing the product’s storage location
@@ -65,7 +65,7 @@ class Location implements Stringable
      *
      * @return string The method returns the location code
      *
-     * @example print Location::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32')->locationCode();
+     * @example print LocationCode::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32')->locationCode();
      */
     public function locationCode(): string
     {
@@ -113,12 +113,12 @@ class Location implements Stringable
     }
 
     /**
-     * Get the string representation of the location.
+     * Get the string representation of the location code.
      *
      * @return string The magic method returns the location code
      *
-     * @example print Location::of(warehouse: 'A1') => 'A1'
-     * @example print Location::of(warehouse: 'A1', rack: 'B3') => 'A1-B3'
+     * @example print LocationCode::of(warehouse: 'A1') => 'A1'
+     * @example print LocationCode::of(warehouse: 'A1', rack: 'B3') => 'A1-B3'
      */
     public function __toString(): string
     {
