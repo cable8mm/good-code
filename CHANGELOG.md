@@ -1,5 +1,16 @@
 # Release Notes
 
+## v2.8.0 - 2025-02-24
+
+### What's Changed
+
+* Fill all of class comments by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/good-code/pull/24
+* Coordinate class comments by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/good-code/pull/25
+* Rename `Location` to `LocationCode` class by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/good-code/pull/26
+* Add `BoxCode` class by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/good-code/pull/27
+
+**Full Changelog**: https://github.com/cable8mm/good-code/compare/v2.7.0...v2.8.0
+
 ## v2.7.0 - 2025-02-23
 
 ### What's Changed
@@ -146,6 +157,7 @@ Feature : Setcode default value. The patch apply setcode default value.
         // Assert
         $this->assertEquals($parsed, $expect);
     }
+
 
 
 
