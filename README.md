@@ -23,6 +23,7 @@ We have provided the API Documentation on the web. For more information, please 
 - [x] Option Good code parser(No code, it matched by name)
 - [x] Receipt code parser
 - [x] Location code parser
+- [x] Box code parser
 
 ## Install
 
@@ -210,6 +211,17 @@ print LocationCode::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32')->locationCode
 print LocationCode::of(['warehouse' => 'AUK', 'rack' => 'R3', 'shelf' => 'S32')->locationCode();
 print LocationCode::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32'); //` Stringable` supported
 //=> AUK-R3-S32
+```
+
+### Box Code
+
+```php
+print BoxCode::of(code: 123, prefix: 'PO');     //=> PO123
+print BoxCode::of([
+    'code' => 123, 'prefix' => 'PO'
+    ])->boxCode();                              //=> PO123
+print BoxCode::of(123)->boxCode();              //=> 123
+print BoxCode::of(123, prefix: 'PO');           //=> PO123
 ```
 
 ## Formatting
