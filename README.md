@@ -206,9 +206,9 @@ print ReceiptCode::of(prefix: 'CT')->nextCode();
 ### Location Code
 
 ```php
-print Location::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32')->locationCode();
-print Location::of(['warehouse' => 'AUK', 'rack' => 'R3', 'shelf' => 'S32')->locationCode();
-print Location::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32'); //` Stringable` supported
+print LocationCode::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32')->locationCode();
+print LocationCode::of(['warehouse' => 'AUK', 'rack' => 'R3', 'shelf' => 'S32')->locationCode();
+print LocationCode::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32'); //` Stringable` supported
 //=> AUK-R3-S32
 ```
 
