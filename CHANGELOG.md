@@ -1,5 +1,13 @@
 # Release Notes
 
+## v2.8.1 - 2025-02-24
+
+### What's Changed
+
+* Rename `BoxCode` with `Sku` for enhancing `Good`'s by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/good-code/pull/28
+
+**Full Changelog**: https://github.com/cable8mm/good-code/compare/v2.8.0...v2.8.1
+
 ## v2.8.0 - 2025-02-24
 
 ### What's Changed
@@ -157,6 +165,7 @@ Feature : Setcode default value. The patch apply setcode default value.
         // Assert
         $this->assertEquals($parsed, $expect);
     }
+
 
 
 
