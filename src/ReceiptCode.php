@@ -51,10 +51,12 @@ class ReceiptCode implements Stringable
      *
      * @param  string  $code  ReceiptCode
      * @return static Provides a fluent interface
+     *
+     * @throws InvalidArgumentException
      */
     public function code(string $code): static
     {
-        if (preg_match('/^([^\-]+)\-([^\-]+)\-(.+)$/', $code, $matches) === false) {
+        if (preg_match('/^([^\-]+)\-([^\-]+)\-(.+)$/', $code, $matches) !== 1) {
             throw new InvalidArgumentException('Invalid code format.');
         }
 
@@ -79,11 +81,13 @@ class ReceiptCode implements Stringable
             return $this->prefix.'-'.date('Ymd').'-0001';
         }
 
-        if ($this->ymd === $this->ymd) {
+        $today = date('Ymd');
+
+        if ($this->ymd === $today) {
             return $this->prefix.'-'.$this->ymd.'-'.str_pad($this->number + 1, 4, '0', STR_PAD_LEFT);
         }
 
-        return $this->prefix.'-'.date('Ymd').'-0001';
+        return $this->prefix.'-'.$today.'-0001';
     }
 
     /**
