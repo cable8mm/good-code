@@ -77,12 +77,12 @@ class SetGood implements Stringable
      * @param  array<string,int>  $setCodes  key-value set code array
      * @return SetGood The method returns SetGood instance with the SetCode string
      *
-     * @example SetGood::ofArray(['7369'=>4,'4235'=>6]) => SET7369x4zz42335x6
+     * @example SetGood::ofArray(['7369'=>4,'4235'=>6]) => SET7369x4zz4235x6
      */
     public static function ofArray(array $setCodes): SetGood
     {
-        $code = GoodCodeType::SET->prefix().implode(SetGood::DELIMITER, array_map(function ($v, $k) {
-            return $k.SetGood::DELIMITER_COUNT.$v;
+        $code = GoodCodeType::SET->prefix().implode(SetGood::DELIMITER, array_map(function ($count, $goodCode) {
+            return $goodCode.SetGood::DELIMITER_COUNT.$count;
         }, $setCodes, array_keys($setCodes)));
 
         return static::of($code);
