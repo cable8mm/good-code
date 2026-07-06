@@ -70,7 +70,7 @@ class ReceiptCodeTest extends TestCase
     public function test_receipt_code_with_zero_number()
     {
         $receiptCode = ReceiptCode::of('PO-20250312-0000');
-        
+
         $this->assertEquals('PO-20250312-0000', $receiptCode->code);
         $this->assertEquals('0000', $receiptCode->number);
     }
@@ -84,7 +84,7 @@ class ReceiptCodeTest extends TestCase
     public function test_receipt_code_with_special_prefix()
     {
         $receiptCode = ReceiptCode::of('IN-20250312-0001');
-        
+
         $this->assertEquals('IN', $receiptCode->prefix);
         $this->assertEquals('20250312', $receiptCode->ymd);
         $this->assertEquals('0001', $receiptCode->number);

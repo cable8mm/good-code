@@ -58,11 +58,11 @@ class SetGood implements Stringable
 
         foreach (explode(SetGood::DELIMITER, $payload) as $good) {
             $parts = explode(SetGood::DELIMITER_COUNT, $good);
-            
+
             if (count($parts) !== 2 || empty($parts[0]) || empty($parts[1])) {
                 throw new InvalidArgumentException('It is not valid code');
             }
-            
+
             [$k, $v] = $parts;
             $this->goods[$k] = $v;
         }

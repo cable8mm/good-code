@@ -32,35 +32,35 @@ class SetGoodTest extends TestCase
     public function test_set_good_with_missing_count()
     {
         $this->expectException(\InvalidArgumentException::class);
-        
+
         SetGood::of('SET1234x');
     }
 
     public function test_set_good_with_missing_good_code()
     {
         $this->expectException(\InvalidArgumentException::class);
-        
+
         SetGood::of('SETx3');
     }
 
     public function test_set_good_with_invalid_format()
     {
         $this->expectException(\InvalidArgumentException::class);
-        
+
         SetGood::of('SET1234x3x5');
     }
 
     public function test_set_good_with_empty_string()
     {
         $this->expectException(\InvalidArgumentException::class);
-        
+
         SetGood::of('');
     }
 
     public function test_set_good_with_multiple_delimiters()
     {
         $setGood = SetGood::of('SET1234x3zz5678x2zz9012x1');
-        
+
         $this->assertEquals([
             '1234' => 3,
             '5678' => 2,
