@@ -86,7 +86,7 @@ class Sku implements Stringable
      *
      * @return string The magic method returns the SKU
      *
-     * @example print Sku::of('1') => 'A1'
+     * @example print Sku::of('1') => '1'
      * @example print Sku::of('1', prefix: 'BO') => 'BO1'
      */
     public function __toString(): string

@@ -151,7 +151,7 @@ print GoodCode::of($optionCode, option: $optionName, callback: function ($key, $
             'The Legend of Zelda: Tears of the Kingdom' => '1234',
             'Call of Duty®: Black Ops 6' => '2314',
             'Grand Theft Auto V' => '43123',
-            '42342', 'name' => 'Marvel\'s Spider-Man 2',
+            '42342' => 'Marvel\'s Spider-Man 2',
         ],
     ];
 
@@ -208,8 +208,8 @@ print ReceiptCode::of(prefix: 'CT')->nextCode();
 
 ```php
 print LocationCode::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32')->locationCode();
-print LocationCode::of(['warehouse' => 'AUK', 'rack' => 'R3', 'shelf' => 'S32')->locationCode();
-print LocationCode::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32'); //` Stringable` supported
+print LocationCode::of(['warehouse' => 'AUK', 'rack' => 'R3', 'shelf' => 'S32'])->locationCode();
+print (string) LocationCode::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32'); // Stringable supported
 //=> AUK-R3-S32
 ```
 
@@ -245,4 +245,4 @@ composer test
 
 ## License
 
-The Phpunit Start Kit is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Good Code Parser is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

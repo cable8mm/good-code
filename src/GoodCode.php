@@ -24,7 +24,7 @@ class GoodCode
      * Constructor.
      *
      * @param  string  $code  The code
-     * @param  \Cable8mm\GoodCode\Enums\GoodCodeType  $originType  The type of the code
+     * @param  GoodCodeType  $originType  The type of the code
      */
     public function __construct(
         private string $code,
@@ -61,14 +61,14 @@ class GoodCode
      * Output value for good code.
      * If the code is set code, it will be array of good values.
      * If the code is normal code, it will be good code string.
-     * the code shouldn't be option, complex and gift code.
+     * This method does not support OPTION, GIFT, and COMPLEX code types.
      *
      * @throws BadFunctionCallException
      */
     public function value(): int|string|array
     {
         if ($this->type == GoodCodeType::OPTION || $this->type == GoodCodeType::GIFT || $this->type == GoodCodeType::COMPLEX) {
-            return throw new BadFunctionCallException('Only complex and set code types are supported');
+            return throw new BadFunctionCallException('OPTION, GIFT, and COMPLEX code types are not supported for value() method. Use callback to transform these codes first.');
         }
 
         if ($this->type == GoodCodeType::SET) {

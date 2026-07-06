@@ -45,13 +45,25 @@ class SetGood implements Stringable
      *
      * @param  string  $setCode  "set1232x3ZZ322ZZ4313x4" means "1232" x 3 + "322" x 4 + "4313" x 4. "1232", "322" and "4312" are good codes.
      * @return array The method returns good code array
+     *
+     * @throws InvalidArgumentException
      */
     private function pipe(): void
     {
         $payload = preg_replace('/^'.GoodCodeType::SET->prefix().'/i', '', $this->code);
 
+        if (empty($payload)) {
+            throw new InvalidArgumentException('It is not valid code');
+        }
+
         foreach (explode(SetGood::DELIMITER, $payload) as $good) {
-            [$k, $v] = explode(SetGood::DELIMITER_COUNT, $good);
+            $parts = explode(SetGood::DELIMITER_COUNT, $good);
+
+            if (count($parts) !== 2 || empty($parts[0]) || empty($parts[1])) {
+                throw new InvalidArgumentException('It is not valid code');
+            }
+
+            [$k, $v] = $parts;
             $this->goods[$k] = $v;
         }
     }
@@ -77,12 +89,12 @@ class SetGood implements Stringable
      * @param  array<string,int>  $setCodes  key-value set code array
      * @return SetGood The method returns SetGood instance with the SetCode string
      *
-     * @example SetGood::ofArray(['7369'=>4,'4235'=>6]) => SET7369x4zz42335x6
+     * @example SetGood::ofArray(['7369'=>4,'4235'=>6]) => SET7369x4zz4235x6
      */
     public static function ofArray(array $setCodes): SetGood
     {
-        $code = GoodCodeType::SET->prefix().implode(SetGood::DELIMITER, array_map(function ($v, $k) {
-            return $k.SetGood::DELIMITER_COUNT.$v;
+        $code = GoodCodeType::SET->prefix().implode(SetGood::DELIMITER, array_map(function ($count, $goodCode) {
+            return $goodCode.SetGood::DELIMITER_COUNT.$count;
         }, $setCodes, array_keys($setCodes)));
 
         return static::of($code);

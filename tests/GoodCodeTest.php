@@ -2,6 +2,7 @@
 
 namespace Cable8mm\GoodCode\Tests;
 
+use Cable8mm\GoodCode\Enums\GoodCodeType;
 use Cable8mm\GoodCode\GoodCode;
 use PHPUnit\Framework\TestCase;
 
@@ -97,5 +98,27 @@ class GoodCodeTest extends TestCase
 
         // Assert
         $this->assertEquals('3124', $code->value());
+    }
+
+    public function test_normal_code_value()
+    {
+        $code = GoodCode::of('72363');
+        $this->assertEquals('72363', $code->value());
+    }
+
+    public function test_get_id_from_gift_code()
+    {
+        $this->assertEquals(11, GoodCode::getId('GIF11'));
+    }
+
+    public function test_get_id_from_complex_code()
+    {
+        $this->assertEquals(10, GoodCode::getId('COM10'));
+    }
+
+    public function test_original_type_preserved()
+    {
+        $code = GoodCode::of('SET1234x2zz5678x1');
+        $this->assertEquals(GoodCodeType::SET, $code->originalType());
     }
 }
