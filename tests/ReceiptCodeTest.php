@@ -66,4 +66,37 @@ class ReceiptCodeTest extends TestCase
 
         ReceiptCode::of('PO-20250312');
     }
+
+    public function test_receipt_code_with_zero_number()
+    {
+        $receiptCode = ReceiptCode::of('PO-20250312-0000');
+        
+        $this->assertEquals('PO-20250312-0000', $receiptCode->code);
+        $this->assertEquals('0000', $receiptCode->number);
+    }
+
+    public function test_receipt_code_next_with_zero()
+    {
+        $today = date('Ymd');
+        $this->assertEquals('PO-'.$today.'-0001', ReceiptCode::of('PO-'.$today.'-0000')->nextCode());
+    }
+
+    public function test_receipt_code_with_special_prefix()
+    {
+        $receiptCode = ReceiptCode::of('IN-20250312-0001');
+        
+        $this->assertEquals('IN', $receiptCode->prefix);
+        $this->assertEquals('20250312', $receiptCode->ymd);
+        $this->assertEquals('0001', $receiptCode->number);
+    }
+
+    public function test_receipt_code_to_string()
+    {
+        $this->assertEquals('PO-20250312-0001', (string) ReceiptCode::of('PO-20250312-0001'));
+    }
+
+    public function test_receipt_code_to_string_empty()
+    {
+        $this->assertEquals('', (string) ReceiptCode::of());
+    }
 }

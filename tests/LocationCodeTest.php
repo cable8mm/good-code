@@ -98,4 +98,31 @@ class LocationCodeTest extends TestCase
             'shelf' => 'S32',
         ]));
     }
+
+    public function test_location_code_with_empty_string()
+    {
+        $this->assertEquals('AUK', LocationCode::of(
+            warehouse: 'AUK',
+            rack: '',
+            shelf: ''
+        )->locationCode());
+    }
+
+    public function test_location_code_with_special_characters()
+    {
+        $this->assertEquals('AUK-R3-S32', LocationCode::of(
+            warehouse: 'AUK',
+            rack: 'R3',
+            shelf: 'S32'
+        )->locationCode());
+    }
+
+    public function test_location_code_no_duplicate_dashes()
+    {
+        $this->assertEquals('AUK-R3', LocationCode::of(
+            warehouse: 'AUK',
+            rack: '',
+            shelf: 'R3'
+        )->locationCode());
+    }
 }
