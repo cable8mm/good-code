@@ -64,7 +64,14 @@ class SetGood implements Stringable
             }
 
             [$k, $v] = $parts;
-            $this->goods[$k] = (int) $v;
+            $count = (int) $v;
+            $currentCount = $this->goods[$k] ?? 0;
+
+            if ($count > PHP_INT_MAX - $currentCount) {
+                throw new InvalidArgumentException('It is not valid code');
+            }
+
+            $this->goods[$k] = $currentCount + $count;
         }
     }
 
