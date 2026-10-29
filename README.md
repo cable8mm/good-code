@@ -10,7 +10,7 @@
 
 A robust code specification is crucial within the commercial market industry, especially for online stores like Amazon. The integration of online stores with Warehouse Management Systems (WMS) is essential as both systems handle extensive seller and product data. Therefore, we recommend implementing a solid structure and providing robust support for these systems.
 
-These specifications cover a variety of online stores, including Coupang, 11th Street, Naver Storefarm, and many others for a while.
+These specifications cover a variety of online stores, including Coupang, 11th Street, and Naver Storefarm.
 
 We have provided the API Documentation on the web. For more information, please visit <https://www.palgle.com/good-code/> ❤️
 
@@ -65,7 +65,7 @@ if (GoodCodeType::of($this->data->get('sellerGoodsCd')) == GoodCodeType::OPTION)
 
 use Cable8mm\GoodCode\Enums\GoodCodeType;
 use Cable8mm\GoodCode\GoodCode;
-use Cable8mm\GoodCode\ValueObjects\SetGood;
+use App\Models\SetGood;
 
 /**
  * For composite and gift products, retrieve the set product and update the master_code.
@@ -94,11 +94,11 @@ if (
 
 use Cable8mm\GoodCode\GoodCode;
 
-print GoodCode::of('SET7369x4zz4235x6')->value();
+var_export(GoodCode::of('SET7369x4zz4235x6')->value());
 //=> ['7369'=>4,'4235'=>6]
 
 print GoodCode::setCodeOf(['1234' => 2, '5678' => 1,])->code();
-//=> 'set1234x2ZZ5678x1'
+//=> SET1234x2zz5678x1
 ```
 
 #### `complex-code`
@@ -129,7 +129,7 @@ print GoodCode::of('GIF11', callback: function ($key) {
     ];
 
     return $a[$key];
-});
+})->value();
 //=> '456'
 ```
 
@@ -146,7 +146,7 @@ use Cable8mm\GoodCode\GoodCode;
 print GoodCode::of($optionCode, option: $optionName, callback: function ($key, $option) {
     $a = [
         10 => [
-            'Super Smash Bros. Ultimate' => 'COM4',
+            'Super Smash Bros. Ultimate' => '4234',
             'Animal Crossing: New Horizons' => '3124',
             'The Legend of Zelda: Tears of the Kingdom' => '1234',
             'Call of Duty®: Black Ops 6' => '2314',
@@ -168,7 +168,7 @@ print GoodCode::of($optionCode, option: $optionName, callback: function ($key, $
 
 use Cable8mm\GoodCode\ValueObjects\SetGood;
 
-print SetGood::of('SET43x3zz253x3')->goods();
+var_export(SetGood::of('SET43x3zz253x3')->goods());
 //=> ['43' => 3, '253' => 3]
 
 print SetGood::ofArray(['43' => 3, '253' => 3])->code();
@@ -192,7 +192,7 @@ print ReceiptCode::of('PO-20250312-0001')->ymd;
 //=> 20250312
 
 print ReceiptCode::of('PO-20250312-0001')->number;
-//=> 0001
+//=> 1 (the parsed number is an integer; ->code retains the leading zeroes)
 
 print ReceiptCode::of('PO-20250312-0001')->nextCode();
 //=> PO-20250312-0002
@@ -207,6 +207,10 @@ print ReceiptCode::of(prefix: 'CT')->nextCode();
 ### Location Code
 
 ```php
+<?php
+
+use Cable8mm\GoodCode\LocationCode;
+
 print LocationCode::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32')->locationCode();
 print LocationCode::of(['warehouse' => 'AUK', 'rack' => 'R3', 'shelf' => 'S32'])->locationCode();
 print (string) LocationCode::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32'); // Stringable supported
@@ -216,6 +220,10 @@ print (string) LocationCode::of(warehouse: 'AUK', rack: 'R3', shelf: 'S32'); // 
 ### SKU
 
 ```php
+<?php
+
+use Cable8mm\GoodCode\Sku;
+
 print Sku::of(code: 123, prefix: 'PO');     //=> PO123
 print Sku::of(123);                         //=> 123
 print Sku::of(123, prefix: 'PO');           //=> PO123
@@ -238,7 +246,7 @@ composer test
 | Type           | Notation | Description                                                                                                                      | Implement |
 | -------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- | --------- |
 | `Normal Code`  | -        | Match only one good                                                                                                              | Yes       |
-| `Set Code`     | SET      | Match one more good, max 255 characters                                                                                          | Yes       |
+| `Set Code`     | SET      | Match one or more goods                                                                                                           | Yes       |
 | `Complex Code` | COM      | Shorten code for `Set Code`                                                                                                      | Yes       |
 | `Gift Code`    | GIF      | Alias `Complex Code`                                                                                                             | Yes       |
 | `Option Code`  | OPT      | Very complicated code. Not mastercode, but code + search name.(eq. wemakeprice, naver petWindow and all most OpenMarket options) | Yes       |
