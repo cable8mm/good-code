@@ -84,4 +84,18 @@ class SetGoodTest extends TestCase
     {
         $this->assertSame(['123' => 2], SetGood::of('SET123x2')->goods());
     }
+
+    public function test_duplicate_good_codes_have_their_counts_combined()
+    {
+        $setGood = SetGood::of('SET123x2zz456x1zz123x3');
+
+        $this->assertSame(['123' => 5, '456' => 1], $setGood->goods());
+    }
+
+    public function test_duplicate_counts_cannot_overflow_integer_range()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        SetGood::of('SET123x'.PHP_INT_MAX.'zz123x1');
+    }
 }
