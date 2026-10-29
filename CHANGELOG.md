@@ -1,5 +1,19 @@
 # Release Notes
 
+## v3.0.0 - 2026-10-29
+
+### What's Changed
+
+* Validate product code inputs by [@replworks-bot](https://github.com/replworks-bot) in https://github.com/cable8mm/good-code/pull/30
+* Correct README examples and refresh workflows by [@replworks-bot](https://github.com/replworks-bot) in https://github.com/cable8mm/good-code/pull/31
+* fix: aggregate duplicate set goods by [@replworks-bot](https://github.com/replworks-bot) in https://github.com/cable8mm/good-code/pull/32
+
+### New Contributors
+
+* [@replworks-bot](https://github.com/replworks-bot) made their first contribution in https://github.com/cable8mm/good-code/pull/30
+
+**Full Changelog**: https://github.com/cable8mm/good-code/compare/v2.8.2...v3.0.0
+
 ## v2.8.2 - 2026-07-06
 
 ### What's Changed
@@ -173,6 +187,7 @@ Feature : Setcode default value. The patch apply setcode default value.
         // Assert
         $this->assertEquals($parsed, $expect);
     }
+
 
 
 
