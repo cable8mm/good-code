@@ -116,6 +116,13 @@ class GoodCodeTest extends TestCase
         $this->assertEquals(10, GoodCode::getId('COM10'));
     }
 
+    public function test_tagged_code_requires_callback()
+    {
+        $this->expectException(\BadFunctionCallException::class);
+
+        GoodCode::of('COM10');
+    }
+
     public function test_original_type_preserved()
     {
         $code = GoodCode::of('SET1234x2zz5678x1');

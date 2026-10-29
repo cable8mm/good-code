@@ -108,6 +108,18 @@ class LocationCodeTest extends TestCase
         )->locationCode());
     }
 
+    public function test_location_code_rejects_only_empty_components()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        LocationCode::of(warehouse: '', rack: '', shelf: '');
+    }
+
+    public function test_location_code_preserves_zero_component()
+    {
+        $this->assertSame('0', LocationCode::of(warehouse: '0')->locationCode());
+    }
+
     public function test_location_code_with_special_characters()
     {
         $this->assertEquals('AUK-R3-S32', LocationCode::of(

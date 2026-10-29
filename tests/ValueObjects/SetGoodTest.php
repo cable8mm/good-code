@@ -67,4 +67,21 @@ class SetGoodTest extends TestCase
             '9012' => 1,
         ], $setGood->goods());
     }
+
+    public function test_set_good_rejects_non_positive_or_non_numeric_counts()
+    {
+        foreach (['SET123xabc', 'SET123x-2', 'SET123x0'] as $code) {
+            try {
+                SetGood::of($code);
+                $this->fail('Expected invalid set count to be rejected.');
+            } catch (\InvalidArgumentException $exception) {
+                $this->assertSame('It is not valid code', $exception->getMessage());
+            }
+        }
+    }
+
+    public function test_goods_counts_are_integers()
+    {
+        $this->assertSame(['123' => 2], SetGood::of('SET123x2')->goods());
+    }
 }
