@@ -101,6 +101,10 @@ class GoodCode
     {
         $type = $originalType = GoodCodeType::of($code);
 
+        if (in_array($type, [GoodCodeType::OPTION, GoodCodeType::COMPLEX, GoodCodeType::GIFT], true) && $callback === null) {
+            throw new BadFunctionCallException('A callback is required for OPTION, GIFT, and COMPLEX codes.');
+        }
+
         if ($type == GoodCodeType::OPTION) {
             $code = $callback(self::getId($code), $option);
             $type = GoodCodeType::of($code);

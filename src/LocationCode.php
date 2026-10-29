@@ -43,7 +43,9 @@ class LocationCode implements Stringable
          */
         private ?string $shelf = null,
     ) {
-        if (is_null($warehouse) && is_null($rack) && is_null($shelf)) {
+        $components = [$warehouse, $rack, $shelf];
+
+        if (count(array_filter($components, static fn ($value) => $value !== null && $value !== '')) === 0) {
             throw new \InvalidArgumentException('At least one parameter must be provided.');
         }
 
@@ -55,7 +57,7 @@ class LocationCode implements Stringable
             $this->warehouse,
             $this->rack,
             $this->shelf,
-        ]));
+        ], static fn ($value) => $value !== ''));
 
         $this->locationCode = preg_replace('/-+/', '-', $this->locationCode);
     }

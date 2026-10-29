@@ -30,4 +30,11 @@ class SkuTest extends TestCase
             'wrong' => 'key',
         ]);
     }
+
+    public function test_sku_array_requires_code()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        Sku::of(['prefix' => 'PO']);
+    }
 }

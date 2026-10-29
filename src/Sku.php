@@ -69,6 +69,10 @@ class Sku implements Stringable
                 throw new \InvalidArgumentException('Invalid key(s): '.implode(', ', array_keys($disallowedKeys)));
             }
 
+            if (! array_key_exists('code', $code) || (! is_string($code['code']) && ! is_int($code['code']))) {
+                throw new \InvalidArgumentException('A string or integer code is required.');
+            }
+
             return new self(
                 code: $code['code'],
                 prefix: $code['prefix'] ?? null

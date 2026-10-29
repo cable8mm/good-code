@@ -26,7 +26,7 @@ class SetGood implements Stringable
     const DELIMITER_COUNT = 'x';
 
     /**
-     * @var array<string,string> array of good code and count
+     * @var array<string,int> array of good code and count
      */
     private array $goods;
 
@@ -59,12 +59,12 @@ class SetGood implements Stringable
         foreach (explode(SetGood::DELIMITER, $payload) as $good) {
             $parts = explode(SetGood::DELIMITER_COUNT, $good);
 
-            if (count($parts) !== 2 || empty($parts[0]) || empty($parts[1])) {
+            if (count($parts) !== 2 || $parts[0] === '' || filter_var($parts[1], FILTER_VALIDATE_INT) === false || (int) $parts[1] < 1) {
                 throw new InvalidArgumentException('It is not valid code');
             }
 
             [$k, $v] = $parts;
-            $this->goods[$k] = $v;
+            $this->goods[$k] = (int) $v;
         }
     }
 
